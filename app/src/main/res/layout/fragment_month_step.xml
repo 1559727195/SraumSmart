@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="@dimen/y5"
+        android:layout_marginRight="15dp">
+
+        <include layout="@layout/layout_step_date_title" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rel_show"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y25"
+        android:layout_below="@+id/rl_title"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/txt_local_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="@dimen/x8"
+            android:layout_marginBottom="@dimen/x4"
+            android:layout_toLeftOf="@+id/txt_local_show"
+            android:gravity="center"
+            android:text="当月耗电"
+            android:textColor="@color/gray"
+            android:textSize="12sp"></TextView>
+
+        <TextView
+            android:id="@+id/txt_local_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="0"
+            android:textColor="#E97014"
+            android:textSize="30sp"></TextView>
+
+        <TextView
+            android:id="@+id/txt_local_du"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/x8"
+            android:layout_marginBottom="@dimen/x5"
+            android:layout_toRightOf="@+id/txt_local_show"
+            android:gravity="center"
+            android:text="度"
+            android:textColor="@color/gray"
+            android:textSize="12sp"></TextView>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_chart"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_below="@+id/rel_show"
+        android:layout_marginLeft="@dimen/x8"
+        android:layout_marginRight="@dimen/x8">
+
+        <com.yxc.chartlib.view.BarChartRecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:paddingLeft="@dimen/x10"
+            android:paddingTop="38dp"
+            android:paddingRight="@dimen/x10"
+            app:barChartRoundRectRadiusRatio="0.25"
+            app:chartColor="@color/green"
+            app:displayNumbers="31"
+            app:enableCharValueDisplay="true"
+            app:enableLeftYAxisLabel="false"
+            app:enableRightYAxisLabel="true"
+            app:recyclerPaddingRight="3dp"
+            app:xAxisScaleDistance="7" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/txt_count_Step"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fl_chart"
+        android:layout_marginTop="@dimen/y10"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/power_txt"
+        android:textColor="@color/gray"
+        android:textSize="12sp"
+        android:visibility="visible" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_count_Step"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="15dp"
+        android:visibility="gone">
+
+        <include layout="@layout/layout_step_bottom_desc" />
+    </RelativeLayout>
+
+</RelativeLayout>

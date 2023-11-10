@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#38CC98"
+    android:orientation="vertical">
+
+    <com.yanzhenjie.statusview.StatusView
+        android:id="@+id/status_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#38CC98"
+        app:fitsView="@+id/root_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y30"
+        android:layout_marginTop="@dimen/y8">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x10"
+            android:paddingRight="@dimen/x20"
+            app:srcCompat="@drawable/icon_t_back" />
+
+        <TextView
+            android:id="@+id/project_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="pm2.5"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/next_step_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/y8"
+            android:layout_marginRight="@dimen/x8"
+            android:text="保存"
+            android:textColor="@color/blue_txt"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/pm25_new_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x15"
+        android:layout_marginTop="@dimen/y30"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/pm25_new_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PM2.5:"
+                android:textColor="@color/white"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/pm25_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x15"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="28sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y10"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/air_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="空气质量:"
+                android:textColor="@color/white"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/air"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x15"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="28sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x15"
+        android:id="@+id/pm_linear_old"
+        android:layout_marginTop="@dimen/y30"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/pm_label_old"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PM2.5:"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/pm_txt_old"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x15"
+            android:text="80"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y30"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/pm_linear_second_new"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/pm_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PM2.5"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/pm_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y15"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="28sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/temp_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="温度"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/temp_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y15"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="28sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/shidu_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="湿度"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/shidu_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y15"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="28sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

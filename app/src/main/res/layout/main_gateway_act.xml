@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/divide"
+        android:layout_alignParentTop="true">
+
+    </FrameLayout>
+
+    <View
+        android:id="@+id/divide"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/activity_group_radioGroup"
+        android:background="#cccccc"/>
+
+    <RadioGroup
+        android:id="@+id/activity_group_radioGroup"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:checkedButton="@+id/order_process"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/y5"
+        android:paddingBottom="@dimen/y5">
+
+        <RadioButton
+            android:id="@+id/order_process"
+            style="@style/main_tab_bottom"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:drawableTop="@drawable/main_tab_1"
+            android:gravity="center"
+            android:text="首页"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:id="@+id/order_query"
+            style="@style/main_tab_bottom"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:checked="false"
+            android:drawableTop="@drawable/main_tab_2"
+            android:gravity="center"
+            android:text="场景"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:id="@+id/merchant_manager"
+            style="@style/main_tab_bottom"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:checked="false"
+            android:drawableTop="@drawable/main_tab_3"
+            android:gravity="center"
+            android:text="我的"
+            android:textSize="10sp" />
+    </RadioGroup>
+
+
+</RelativeLayout>
+

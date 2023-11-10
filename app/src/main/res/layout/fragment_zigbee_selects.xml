@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:id="@+id/list_forscrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    <com.massky.sraum.widget.ListViewForScrollView
+        android:id="@+id/zigbee_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:horizontalSpacing="@dimen/y5"
+
+        android:numColumns="5"
+        android:paddingLeft="@dimen/x5"
+        android:paddingRight="@dimen/x5"
+        android:paddingTop="@dimen/y5"
+        android:paddingBottom="@dimen/y5"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="@dimen/y5"></com.massky.sraum.widget.ListViewForScrollView>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

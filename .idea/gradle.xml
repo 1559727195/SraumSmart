@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="PLATFORM" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="1.8" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/aircontrolprogressbar" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/barchartlib" />
+            <option value="$PROJECT_DIR$/citypickerview" />
+            <option value="$PROJECT_DIR$/commonlib" />
+            <option value="$PROJECT_DIR$/datepicker" />
+            <option value="$PROJECT_DIR$/esptouch" />
+            <option value="$PROJECT_DIR$/pickerview" />
+            <option value="$PROJECT_DIR$/pm25progressbar" />
+            <option value="$PROJECT_DIR$/statusview" />
+            <option value="$PROJECT_DIR$/swipemenulib" />
+            <option value="$PROJECT_DIR$/verticaltablayout" />
+            <option value="$PROJECT_DIR$/widgetlib" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

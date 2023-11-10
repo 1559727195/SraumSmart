@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linear"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#EFEFF2"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/green">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:paddingRight="20dp"
+            app:srcCompat="@drawable/icon_t_back" />
+
+        <TextView
+            android:id="@+id/project_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="选择设备类型"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/y60"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y40"
+            android:id="@+id/sao_rel"
+            android:background="@drawable/rectangle_shape"
+            android:layout_centerInParent="true"
+            app:layout_widthPercent="70%">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x60"
+                android:id="@+id/txt_sao_one"
+                android:text="扫一扫添加网关" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_toRightOf="@+id/txt_sao_one"
+                app:srcCompat="@drawable/wode_right_arrow" />
+        </RelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y40"
+            android:id="@+id/search_rel"
+            android:background="@drawable/rectangle_bottom_shape"
+            android:layout_centerInParent="true"
+            app:layout_widthPercent="70%">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x66"
+                android:id="@+id/txt_sao_two"
+                android:text="搜索添加网关" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x25"
+                android:layout_toRightOf="@+id/txt_sao_two"
+                app:srcCompat="@drawable/wode_right_arrow" />
+        </RelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <Button
+                    android:id="@+id/start_btn_store"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    app:layout_widthPercent="70%" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/start_btn_store"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="11dp"
+                    android:textColor="#000000" />
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

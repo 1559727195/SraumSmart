@@ -1,0 +1,243 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.mob.sdk'
+apply plugin: 'android-aspectjx'
+
+
+android {
+    namespace 'com.massky.sraum'
+    signingConfigs {
+        config {
+            keyAlias 'sraum'
+            keyPassword 'xufuchao'
+            storeFile file('../key.jks')
+            storePassword '123456'
+        }
+
+        release {
+            keyAlias 'sraum'
+            keyPassword 'xufuchao'
+            storeFile file('../key.jks')
+            storePassword 'xufuchao'
+        }
+        debug {
+            keyAlias 'sraum'
+            keyPassword 'xufuchao'
+            storeFile file('../key.jks')
+            storePassword 'xufuchao'
+        }
+    }
+    compileSdkVersion 31
+    buildToolsVersion "30.0.3"
+
+    useLibrary 'org.apache.http.legacy'
+    defaultConfig {
+        applicationId "com.massky.sraum"
+        minSdkVersion 15
+        targetSdkVersion 31
+        versionCode 128
+        versionName "3.0.8"//最新128 ，3.0.8
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [
+                GETUI_APP_ID    : "9e8ate29YR6eb948bVlTk4",
+                GETUI_APP_KEY   : "bThEinZWlVA3yEHhhtHwH1",
+                GETUI_APP_SECRET: "JQmHj8QvmL776e5qwRgUz8"
+        ]
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        ndk {
+            //设置支持的SO库架构
+            ndk {
+                moduleName "crypt"
+            }
+            abiFilters 'arm64-v8a'//'armeabi', 'armeabi-v7a', 'x86_64', 'arm64-v8a'方便去除模擬器的，縮小apk體積
+        }
+
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+//        multiDexEnabled true//设置
+        // 为支持多dex输出模式
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+
+//    dexOptions {
+//        incremental true
+//        javaMaxHeapSize "4g"
+//    }
+//
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    sourceSets.main {
+        jni.srcDirs = []//disable automatic ndk-build call
+        jniLibs.srcDir "src/main/libs"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+aspectjx {
+    // 排除一些第三方库的包名（Gson、 LeakCanary 和 AOP 有冲突）
+    // 否则就会起冲突：ClassNotFoundException: Didn't find class on path: DexPathList
+    //我遇到的 Execution failed for task ':app:dexBuilderDebug'.
+    //> java.util.zip.ZipException: zip file is empty
+    exclude 'androidx', 'com.google', 'com.squareup', 'com.alipay', 'com.taobao',
+            'org.apache',
+            'org.jetbrains.kotlin',
+            "module-info", 'versions.9'
+}
+
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '28.0.0'
+            }
+        }
+    }
+}
+
+configurations.all {
+    resolutionStrategy {
+        force 'androidx.core:core-ktx:1.6.0'
+    }
+}
+
+MobSDK {
+    appKey "1a65fe6cfd250"
+    appSecret "991ff716e52088581327423bf04509b0"
+    spEdition "fp" // 设定MobSDK为隐私协议适配版本
+    SMSSDK {}
+}
+
+//配置GreenDao文件生成位置，它的级别是与Android标签和dependencies标签一个级别的
+greendao {
+    //数据库的版本号，数据库版本升级的时候用得到
+    schemaVersion 1;
+    //生成的Daos、DaoMaster路径，我选择的是生成在自己的实体类文件下
+    daoPackage "com.massky.sraum.bean"
+    //生成的资源路径，默认存放在build中
+    targetGenDir "src/main/java"
+}
+
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation project(path: ':aircontrolprogressbar')
+    implementation project(':barchartlib')
+    implementation project(':citypickerview')
+    implementation project(path: ':datepicker')
+    implementation project(':esptouch')
+    implementation project(path: ':pickerview')
+    implementation project(path: ':pm25progressbar')
+    implementation project(':verticaltablayout')
+    implementation project(':swipemenulib')
+    implementation project(':widgetlib')
+    implementation project(':statusview')
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+//    libs依赖jar包文件
+    implementation files('libs/jcore-android-2.3.4.jar')
+    //jpush-android-3.6.0.jar
+    implementation files('libs/jpush-android-3.6.0.jar')
+    implementation files('libs/nineoldandroids-2.4.0.jar')
+    implementation files('libs/BLEasyConfig.jar')
+    implementation files('libs/com.broadcom.cooee.jar')
+    implementation files('libs/easylink2.0.jar')
+    implementation files('libs/LSFSK_1.0.jar')
+    implementation files('libs/libForEElink.jar')
+    implementation files('libs/GizWifiSDK.jar')
+    implementation files('libs/Lark7618SDK_noudp1606031910_0101.jar')
+    implementation files('libs/simpleconfigwizardlib.jar')
+    implementation files('libs/OneShotConfig.jar')
+    implementation files('libs/Msc.jar')
+    implementation files('libs/Sunflower.jar')
+    implementation files('libs/voice.jar')
+    implementation files('libs/voiceRecog2.jar')
+    implementation files('libs/GetuiSDK4.3.5.6.jar')
+
+//    第三方UI依赖
+//    implementation 'com.yanzhenjie:statusview:1.0.3'
+    implementation 'androidx.percentlayout:percentlayout:1.0.0'
+    implementation 'com.contrarywind:Android-PickerView:3.2.7'
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha01'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0-alpha02'
+    implementation 'com.huxq17.xrefreshview:xrefreshview:3.6.6'
+    implementation 'com.google.android.material:material:1.1.0'
+
+    //第三方工具库依赖
+    implementation 'com.jakewharton:butterknife:10.1.0'
+    kapt 'com.jakewharton:butterknife-compiler:10.1.0'
+    implementation 'androidx.percentlayout:percentlayout:1.0.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.0.5'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.github.bumptech.glide:glide:4.0.0-RC1'
+    implementation 'com.forward.androids:androids:1.1.7.1'
+    implementation 'org.greenrobot:greendao:3.2.2'
+    implementation 'com.zhy:okhttputils:2.6.2'
+    implementation 'com.alibaba:fastjson:1.2.49'
+    implementation 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
+//    implementation 'com.guardtime:ksi-service-client-apache-http:4.12.181'
+    implementation 'androidx.vectordrawable:vectordrawable:1.0.1'
+    implementation 'androidx.fragment:fragment:1.1.0-alpha02'
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'com.airbnb.android:lottie:2.5.4'
+    implementation 'com.github.zhangliangming:PreferencesProvider:v1.3'
+    //引入GIF背景动态图实现依赖
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.1.+'
+    implementation 'com.squareup.retrofit2:retrofit:2.0.0'
+    //     compile 'com.squareup.retrofit2:converter-gson:2.0.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+    implementation 'ru.alexbykov:nopermission:1.1.2'
+    implementation 'com.kyle.nestedradiogrouplib:radiogrouplib:1.0.1'
+    implementation 'com.yanzhenjie:permission:2.0.0-rc12'
+    //    萤石云
+    implementation 'com.ezviz.sdk:ezuikit:2.2.1'
+    implementation 'com.google.zxing:core:3.3.0'
+    implementation 'com.yaokantv:ykcentersdk:1.7.5'
+    implementation 'org.aspectj:aspectjrt:1.9.5'
+    configurations {
+        all*.exclude group: 'com.google.code.gson'
+    }
+
+}
+
+
+repositories {
+    mavenCentral()
+}

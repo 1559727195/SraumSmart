@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp">
+
+    <ImageView
+        android:id="@+id/img_left"
+        android:layout_width="@dimen/x40"
+        android:layout_height="@dimen/x40"
+        android:padding="@dimen/x8"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/txt_layout"
+        android:scaleType="center"
+        android:src="@drawable/pre" />
+
+    <TextView
+        android:id="@+id/txt_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="2019年04月09日"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/img_right"
+        android:layout_width="@dimen/x40"
+        android:layout_height="@dimen/x40"
+        android:padding="@dimen/x8"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/txt_layout"
+        android:scaleType="center"
+        android:src="@drawable/next_hui" />
+</merge>

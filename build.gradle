@@ -1,0 +1,59 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = '1.4.21'
+    repositories {
+        google()
+        jcenter()
+        maven{ url 'https://maven.aliyun.com/repository/google'}
+        maven{ url 'https://maven.aliyun.com/repository/gradle-plugin'}
+        maven{ url 'https://maven.aliyun.com/repository/public'}
+        maven{ url 'https://maven.aliyun.com/repository/jcenter'}
+        repositories {
+            maven {
+                url "https://repo.eclipse.org/content/repositories/paho-releases/"
+            }
+        }
+        // 1.添加MobSDK Maven地址
+        maven {
+            url "https://mvn.mob.com/android"
+        }
+        // google()
+        flatDir {
+            dirs 'libs'   // aar目录
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.2.18'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.3.0' // add plugin
+        // 2.注册MobSDK
+        classpath "com.mob.sdk:MobSDK:2018.0319.1724"
+        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.10'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven{ url 'https://maven.aliyun.com/repository/google'}
+        maven{ url 'https://maven.aliyun.com/repository/gradle-plugin'}
+        maven{ url 'https://maven.aliyun.com/repository/public'}
+        maven{ url 'https://maven.aliyun.com/repository/jcenter'}
+        maven {
+            url 'http://www.idescout.com/maven/repo/'
+        }
+        maven { url "https://jitpack.io" }
+        flatDir {
+            dirs 'libs'   // aar目录
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

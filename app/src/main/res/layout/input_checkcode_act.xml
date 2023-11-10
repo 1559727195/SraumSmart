@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.yanzhenjie.statusview.StatusView
+        android:id="@+id/status_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green"
+        app:fitsView="@+id/root_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/green">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:paddingRight="20dp"
+            app:srcCompat="@drawable/icon_t_back" />
+
+        <TextView
+            android:id="@+id/toolbar_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="输入验证码"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:id="@+id/wode_setting"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:src="@drawable/wode_setting"/>-->
+    </RelativeLayout>
+
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_widthPercent="80%">
+
+        <TextView
+            android:id="@+id/phone_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y30"
+            android:text="请输入13812391092收到的短信验证码"
+            android:textColor="@color/dark_gray"
+            android:textSize="14sp"
+            app:layout_widthPercent="70%" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/login_per_lay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/phone_id"
+            android:layout_marginLeft="@dimen/x50"
+            android:layout_marginTop="@dimen/y15"
+            app:layout_widthPercent="50%">
+
+            <com.massky.sraum.view.ClearEditText
+                android:id="@+id/checkcode_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:background="@null"
+                android:gravity="left"
+                android:hint="请输入验证码"
+                android:layout_centerHorizontal="true"
+                android:inputType="text"
+                android:maxLength="15"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                app:layout_widthPercent="80%" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <TextView
+            android:id="@+id/timebutton_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/phone_id"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@+id/login_per_lay"
+            android:gravity="left"
+            android:text="@string/getcode"
+            android:textColor="@color/gray"
+            android:textSize="12sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_below="@+id/login_per_lay"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray"
+            app:layout_widthPercent="70%"></View>
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y40">
+
+        <Button
+            android:id="@+id/btn_login_gateway"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/add_zigbee_device_btn"
+            android:text="下一步"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_widthPercent="80%" />
+
+
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+</LinearLayout>

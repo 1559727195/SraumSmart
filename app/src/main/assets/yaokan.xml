@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<litepal>
+    <dbname value="yaoaknsdk"></dbname>
+
+    <version value="23"></version>
+    <!--2019.09.26 遥控器增加provider属性-->
+    <list>
+        <mapping class="com.yaokantv.yaokansdk.model.RemoteCtrl" />
+        <mapping class="com.yaokantv.yaokansdk.model.RcCmd" />
+        <mapping class="com.yaokantv.yaokansdk.model.YkDevice" />
+        <mapping class="com.yaokantv.yaokansdk.model.CrashLog" />
+        <mapping class="com.yaokantv.yaokansdk.model.KeyStatus" />
+    </list>
+</litepal>
